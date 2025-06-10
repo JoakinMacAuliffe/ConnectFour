@@ -1,37 +1,49 @@
-class Node {
-    int value;
-    Node left;
-    Node right;
+class Node<K extends Comparable<K>, V>{
+    K key;
+    V value;
+    Node<K, V> left, right;
 
-    Node(int value) {
+    Node(K key, V value) {
+        this.key = key;
         this.value = value;
-        this.left = null;
-        this.right = null;
     }
 }
 
 class BST {
-    Node root;
-    void insert(int x) {
-        if (root == null) {
-           root = new Node(x);
-           return;
-        }
-        Node aux = root;
-        while (aux != null) {
-            if (aux.value > x) {
-                if (aux.left == null) {
-                    aux.left = new Node(x);
-                    return;
-                }
-                aux = aux.left;
-            }
-            if (aux.value < x) {
-                if (aux.right == null) {
-                    aux.right = new Node(x);
-                }
-                aux = aux.right;
-            }
-        }
+
+    Node<Integer, String> root;
+
+    void insert(int key, String value) {
+        root = insertRec(root, key, value);
     }
+
+    private Node<Integer, String> insertRec(Node<Integer, String> node, int key, String value) {
+        if (node == null) {
+            return new Node<>(key, value);
+        }
+        if (key < node.key) {
+            node.left = insertRec(node.left, key, value);
+        } else if (key > node.key) {
+            node.right = insertRec(node.right, key, value);
+        } else {
+            node.value = value;
+        }
+        return node;
+    }
+
+    String get(int key) {
+        Node<Integer, String> current = root;
+        while (current != null) {
+            if (key < current.key) {
+                current =current.left;
+            } else if (key > current.key) {
+                current = current.right;
+            } else {
+                return current.value;
+            }
+        }
+        return null;
+    }
+
+
 }
