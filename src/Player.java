@@ -5,7 +5,7 @@ class Player {
     private int draws;
     private int losses;
 
-    Player(String playerName, int wins int draws, int losses) {
+    public Player(String playerName, int wins int draws, int losses) {
         this.playerName = playerName;
         this.wins = wins;
         this.draws = draws;
