@@ -1,19 +1,19 @@
 class ConnectFour{
     
-    private char[7][6] grid;
-    private currentSymbol;
+    private char[][] grid = new char[7][6];
+    private char currentSymbol;
     
     public ConnectFour(){
         
         for(int i=0; i<7; i++){
             
             for(int j=0; j<6; j++){
-                
+
                 this.grid[i][j] = ' ';
             }
         }
         
-        this.currentSymbol = x;
+        this.currentSymbol = 'x';
     }
     
     public Boolean makeMove(int z){
@@ -39,7 +39,11 @@ class ConnectFour{
     }
     
     public char isGameOver(){
-        
-        
+        return ' ';
     }
+
+    public static void main(String[] args) {
+
+    }
+
 }

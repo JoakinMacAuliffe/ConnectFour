@@ -9,24 +9,23 @@ public class Game{
     private ConnectFour connectFour;
     
     Scanner sc = new Scanner(System.in);
-    connectFour = new ConnectFour();
-    
     Game(String playerNameA, String playerNameB){
-        
+
+        this.connectFour = new ConnectFour();
         this.playerNameA = playerNameA;
         this.playerNameB = playerNameB;
         
         status = "IN_PROGRESS";
-        winnerPlayerName = NULL;
+        winnerPlayerName = null;
         
     }
     
     public String Play(){
         
-        while(winnerPlayerName == NULL){
+        while(winnerPlayerName == null){
             
-            System.out.println("En que fila desea jugar su ficha? (1-7)")
-            answer = sc.nextInt() - 1;
+            System.out.println("En que fila desea jugar su ficha? (1-7)";
+            int answer = sc.nextInt() - 1;
             
             connectFour.makeMove(answer);
             
