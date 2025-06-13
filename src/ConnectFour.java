@@ -23,19 +23,16 @@ class ConnectFour{
         int position = 0; //posicion en la columna
         
         while(position < 6 && grid[z][position] != ' ') position++;
-        
+
         if(position != 6){
-            
+
             grid[z][position] = currentSymbol;
-            
             if(currentSymbol == 'x') currentSymbol = 'o';
             else currentSymbol = 'x';
-            
+
             return true;
         }
-        
         else return false;
-            
     }
     
     public char isGameOver(){        /*luego en la clase game, hacer un switch que decida
