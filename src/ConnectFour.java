@@ -47,11 +47,11 @@ class ConnectFour{
 
                 char symbol = grid[i][j];
 
+                if(j+3 < 6 && grid[i][j+1] == symbol && grid[i][j+2] == symbol //busca de forma vertical
+                        && grid[i][j+3] == symbol) return symbol;
+
                 if(i+3 < 7 && grid[i+1][j] == symbol && grid[i+2][j] == symbol //busca de forma horizontal
                     && grid[i+3][j] == symbol) return symbol;
-
-                if(j+3 < 6 && grid[i][j+1] == symbol && grid[i][j+2] == symbol //busca de forma vertical
-                    && grid[i][j+3] == symbol) return symbol;
 
                 if(i+3 < 7 && j+3 < 6 && grid[i+1][j+1] == symbol && grid[i+2][j+2] == symbol
                     && grid[i+3][j+3] == symbol) return symbol; //busca diagonal hacia arriba 
