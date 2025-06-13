@@ -60,7 +60,7 @@ class ConnectFour{
                     && grid[i+3][j+3] == symbol) return symbol; //busca diagonal hacia arriba 
 
                 if(i+3 < 7 && j-3 < 6 && grid[i+1][j-1] == symbol && grid[i+2][j-2] == symbol
-                    && grid[i+3][j-3] == symbol) return symbol;
+                    && grid[i+3][j-3] == symbol) return symbol; //busca diagonal hacia abajo
             }
         }
 
