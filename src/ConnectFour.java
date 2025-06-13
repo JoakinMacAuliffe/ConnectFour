@@ -38,8 +38,34 @@ class ConnectFour{
             
     }
     
-    public char isGameOver(){
-        return ' ';
+    public char isGameOver(){        /*luego en la clase game, hacer un switch que decida
+                                      que hacer con el char que reciba. */
+        Boolean empty;
+
+        for(int i=0; i < 7; i++){
+            for(int j=0; j < 6; j++){
+
+                if(grid[i][j] == ' ') empty = true; break;
+                //si esta vacio, todavia no hay empate y se salta a la sig linea
+
+                char symbol = grid[i][j];
+
+                if(i+3 < 7 && grid[i+1][j] == symbol && grid[i+2][j] == symbol //busca de forma horizontal
+                    && grid[i+3][j] == symbol) return symbol;
+
+                if(j+3 < 6 && grid[i][j+1] == symbol && grid[i][j+2] == symbol //busca de forma vertical
+                    && grid[i][j+3] == symbol) return symbol;
+
+                if(i+3 < 7 && j+3 < 6 && grid[i+1][j+1] == symbol && grid[i+2][j+2] == symbol
+                        && grid[i+3][j+3] == symbol) return symbol; //busca diagonal hacia arriba (no me deja alinearlo)
+
+                if(i+3 < 7 && j-3 < 6 && grid[i+1][j-1] == symbol && grid[i+2][j-2] == symbol
+                    && grid[i+3][j-3] == symbol) return symbol;
+            }
+        }
+
+        if(empty) return 'c'; //continue
+        return 'd'; //draw
     }
 
     public static void main(String[] args) {
