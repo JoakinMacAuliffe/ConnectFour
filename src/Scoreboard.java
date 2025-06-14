@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 class Scoreboard {
 
     private BST winTree;
@@ -17,13 +20,22 @@ class Scoreboard {
     }
 
     public void registerPlayer(String playerName) {
-        if(players.get(playerName) == null) {
+        if(!checkPlayer(playerName)) { // Verifica si ya está registrado el jugador
             players.insert(new Player(playerName));
         }
     }
 
     public int getPlayedGames() {
         return playedGames;
+    }
+
+    public boolean checkPlayer(String playerName) {
+        return players.get(playerName) != null;
+    }
+
+    public int[] winRange(int low, int high) {
+        List<Player> result = new ArrayList<>();
+        Node<String, Player> root = players.get
     }
 
 }
