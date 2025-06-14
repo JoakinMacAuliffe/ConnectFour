@@ -5,11 +5,8 @@ class Player {
     private int draws;
     private int losses;
 
-    public Player(String playerName, int wins, int draws, int losses) {
+    public Player(String playerName) {
         this.playerName = playerName;
-        this.wins = wins;
-        this.draws = draws;
-        this.losses = losses;
     }
 
     public void addWin() {
