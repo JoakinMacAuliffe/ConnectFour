@@ -37,12 +37,15 @@ class ConnectFour{
     
     public char isGameOver(){        /*luego en la clase game, hacer un switch que decida
                                       que hacer con el char que reciba. */
-        Boolean empty;
+        boolean empty = false;
 
         for(int i=0; i < 7; i++){
             for(int j=0; j < 6; j++){
 
-                if(grid[i][j] == ' ') empty = true; break;
+                if(grid[i][j] == ' ') {
+                    empty = true;
+                    break;
+                }
                 //si esta vacio, todavia no hay empate y se salta a la sig linea
 
                 char symbol = grid[i][j];

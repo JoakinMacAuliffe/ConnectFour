@@ -33,4 +33,20 @@ class Player {
         }
     }
 
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public int getWins() {
+        return wins;
+    }
+
+    public int getDraws() {
+        return draws;
+    }
+
+    public int getLosses() {
+        return losses;
+    }
+
 }

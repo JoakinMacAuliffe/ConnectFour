@@ -13,11 +13,12 @@ class BST {
 
     Node<Integer, String> root;
 
-    void insert(int key, String value) {
-        root = insertRec(root, key, value);
+    void insert(Player p) {
+        root = insertRec(root, p.getWins(), p.getPlayerName());
     }
 
     private Node<Integer, String> insertRec(Node<Integer, String> node, int key, String value) {
+
         if (node == null) {
             return new Node<>(key, value);
         }
@@ -45,5 +46,50 @@ class BST {
         return null;
     }
 
+}
 
+class HashST {
+
+    private static final int CAPACITY = 16;
+    private Node<String, Player>[] table;
+
+    @SuppressWarnings("unchecked")
+    public HashST() {
+        table = (Node<String, Player>[]) new Node[CAPACITY];
+    }
+
+    private int hash(String key) {
+        return (key.hashCode() & 0x7fffffff) % CAPACITY;
+    }
+
+    public void insert(Player p) {
+
+        String key = p.getPlayerName();
+        Player value = p;
+
+        int idx = hash(key);
+        Node<String, Player> node = table[idx];
+        while (node != null) {
+            if (node.key.equals(key)) {
+                node.value = value;
+                return;
+            }
+            node = node.right;
+        }
+        Node<String, Player> newNode = new Node<>(key, value);
+        newNode.right = table[idx];
+        table[idx] = newNode;
+    }
+
+    public Player get(String key) {
+        int idx = hash(key);
+        Node<String, Player> node = table[idx];
+        while (node != null) {
+            if (node.key.equals(key)) {
+                return node.value;
+            }
+            node = node.right;
+        }
+        return null;
+    }
 }

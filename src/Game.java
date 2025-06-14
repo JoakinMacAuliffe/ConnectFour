@@ -24,7 +24,7 @@ public class Game{
         
         while(winnerPlayerName == null){
             
-            System.out.println("En que fila desea jugar su ficha? (1-7)";
+            System.out.println("En que fila desea jugar su ficha? (1-7)");
             int answer = sc.nextInt() - 1;
             
             connectFour.makeMove(answer);
