@@ -1,3 +1,5 @@
+import java.util.List;
+
 class Node<K extends Comparable<K>, V>{
     K key;
     V value;
@@ -7,6 +9,23 @@ class Node<K extends Comparable<K>, V>{
         this.key = key;
         this.value = value;
     }
+
+    public K getKey() {
+        return key;
+    }
+
+    public V getValue() {
+        return value;
+    }
+
+    public Node<K, V> getLeft() {
+        return left;
+    }
+
+    public Node<K, V> getRight() {
+        return right;
+    }
+
 }
 
 class BST {
@@ -44,6 +63,10 @@ class BST {
             }
         }
         return null;
+    }
+
+    Node<Integer, String> getRoot() {
+        return root;
     }
 
 }
