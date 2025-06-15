@@ -64,6 +64,7 @@ class Scoreboard {
     }
 
     public Player[] winSuccesor(int wins) {
+        // Busca el entry que viene después del entry cuyo key es wins (un entry es el conjunto entre key y value)
         Map.Entry<Integer, List<Player>> entry = playersByWins.higherEntry(wins);
         if(entry == null) {
             return new Player[0];
