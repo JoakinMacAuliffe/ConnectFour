@@ -96,6 +96,14 @@ class ConnectFour{
         System.out.println(" 1 2 3 4 5 6 7");
     }
 
+    public char getCurrentSymbol() {
+        return currentSymbol;
+    }
+
+    public void setCurrentSymbol(char symbol) {
+        this.currentSymbol = symbol;
+    }
+
     public static void main(String[] args) {
 
     }

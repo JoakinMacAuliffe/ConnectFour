@@ -79,8 +79,36 @@ class Scoreboard {
         return list.toArray(new Player[0]);
     }
 
+    public void printScoreboard() {
+
+        System.out.println("-=x=-=x=-=x=- SCOREBOARD -=x=-=x=-=x=-");
+
+        for (Integer wins : playersByWins.descendingKeySet()) { // Ordena jugadores con respecto a su numero de victorias
+            List<Player> playersList = playersByWins.get(wins);
+            for (Player player : playersList) {
+                System.out.println(player.getPlayerName() + " | Victorias: " + player.getWins() +
+                        " | Derrotas: " + player.getLosses() +
+                        " | Empates: " + player.getDraws());
+            }
+        }
+
+    }
+
     public static void main(String[] args) {
-        
+        Scoreboard scoreboard = new Scoreboard();
+
+        scoreboard.registerPlayer("Sergio");
+        scoreboard.registerPlayer("Joakin");
+
+        scoreboard.addGameResult("Joakin", "Sergio", false);
+
+        scoreboard.printScoreboard();
+
+        scoreboard.addGameResult("Sergio", "Joakin", false);
+        scoreboard.addGameResult("Sergio", "Joakin", false);
+
+        scoreboard.printScoreboard();
+
     }
 
 }

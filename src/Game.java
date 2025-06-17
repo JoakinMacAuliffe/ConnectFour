@@ -32,32 +32,58 @@ public class Game{
     }
     
     public String play(){
-        
+
+        int startingPlayer = -1;
+
+        while(startingPlayer != 1 && startingPlayer != 2) {
+            System.out.println("Seleccione quién empieza: ");
+            System.out.println("1. " + playerNameA + " (" + playerA_Symbol + ")");
+            System.out.println("2. " + playerNameB + " (" + playerB_Symbol + ")");
+            try {
+                startingPlayer = Integer.parseInt(reader.readLine());
+            } catch (IOException | NumberFormatException e) {
+                System.out.println("Error: Entrada inválida");
+            }
+        }
+
+        if(startingPlayer == 1) {
+            connectFour.setCurrentSymbol(playerA_Symbol);
+        } else {
+            connectFour.setCurrentSymbol(playerB_Symbol);
+        }
+
+        connectFour.printBoard();
+
         while(winnerPlayerName == null){
 
+            String currentPlayer;
+
+            if(connectFour.getCurrentSymbol() == playerA_Symbol) {
+                currentPlayer = playerNameA;
+            } else {
+                currentPlayer = playerNameB;
+            }
+
+            System.out.println("Turno de " + currentPlayer + " (" + connectFour.getCurrentSymbol() + ")");
             System.out.println("En que fila desea jugar su ficha? (1-7)");
             int answer = -1;
             try {
                 answer = Integer.parseInt(reader.readLine()) - 1;
-            } catch (IOException | NumberFormatException e) {
+            } catch(IOException | NumberFormatException e) {
                 System.out.println("Error: Entrada inválida.");
                 continue;
             }
             
-            connectFour.makeMove(answer);
-            
+            if(!connectFour.makeMove(answer)) {
+                System.out.println("Entrada inválida.");
+                continue;
+            }
+
+            connectFour.printBoard();
+
             switch(connectFour.isGameOver()) {
 
                 case 'c':
-                    turn++;
-                    connectFour.printBoard(); // Imprime el tablero
-
-                    if(turn % 2 == 0) {
-                        System.out.println("Turno de " + playerNameA + " (" + playerA_Symbol + ")");
-                    } else {
-                        System.out.println("Turno de " + playerNameB + " (" + playerB_Symbol + ")");
-                    }
-
                     continue;
 
                 case 'd':
@@ -68,7 +94,6 @@ public class Game{
 
                 case 'x': // Debido a que el primer símbolo es x, se asigna X a playerNameA
                     winnerPlayerName = playerNameA;
-                    connectFour.printBoard();
                     System.out.println("El jugador " + winnerPlayerName + " (" + playerA_Symbol + ")" + " gana la partida!");
                     scoreboard.addGameResult(winnerPlayerName, playerNameB, false);
                     status = "VICTORY";
@@ -76,7 +101,6 @@ public class Game{
 
                 case 'o': // Gana playerNameB
                     winnerPlayerName = playerNameB;
-                    connectFour.printBoard();
                     System.out.println("El jugador " + winnerPlayerName + " (" + playerB_Symbol + ")" + " gana la partida!");
                     scoreboard.addGameResult(winnerPlayerName, playerNameA, false);
                     status = "VICTORY";
@@ -89,7 +113,7 @@ public class Game{
     }
 
     public static void main(String[] args) {
-        Game game = new Game("Sergio", "Martin");
+        Game game = new Game("Martin", "Sergio");
         game.play();
     }
 }
