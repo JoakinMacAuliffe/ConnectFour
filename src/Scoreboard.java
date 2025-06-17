@@ -4,8 +4,14 @@ class Scoreboard {
 
     private BST winTree; // <int, String>
     private HashST players; // <String, Player>
-    private TreeMap<Integer, List<Player> > playersByWins = new TreeMap<>(); // Utilizado para almacenar una lista de jugadores que posean cierta cantidad de wins
+    private TreeMap<Integer, List<Player> > playersByWins; // Utilizado para almacenar una lista de jugadores que posean cierta cantidad de wins
     private int playedGames = 0;
+
+    public Scoreboard() {
+        winTree = new BST();
+        players = new HashST();
+        playersByWins = new TreeMap<>();
+    }
 
     public void addGameResult(String winnerPlayerName, String loserPlayerName, boolean draw) {
         playedGames++;
@@ -71,6 +77,10 @@ class Scoreboard {
         }
         List<Player> list = entry.getValue();
         return list.toArray(new Player[0]);
+    }
+
+    public static void main(String[] args) {
+        
     }
 
 }
