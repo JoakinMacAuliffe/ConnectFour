@@ -14,7 +14,7 @@ class ConnectFour{
                 this.grid[i][j] = ' ';
             }
         }
-        
+
         this.currentSymbol = 'x';
     }
     
@@ -47,9 +47,9 @@ class ConnectFour{
                 char symbol = grid[i][j];
 
                 //si esta vacio, todavia no hay empate y se salta a la sig linea
-                if(grid[i][j] == ' ') {
+                if(symbol == ' ') {
                     empty = true;
-                    continue;
+                    break;
                 }
 
                 // busca de forma vertical
