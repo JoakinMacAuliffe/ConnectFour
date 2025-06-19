@@ -18,7 +18,7 @@ class ConnectFour{
         this.currentSymbol = 'x';
     }
     
-    public Boolean makeMove(int z){//a
+    public Boolean makeMove(int z){//e
         
         if(z >= 7 || z < 0) return false;
 
