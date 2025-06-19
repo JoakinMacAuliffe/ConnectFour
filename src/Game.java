@@ -33,6 +33,7 @@ public class Game{
     
     public String play(){
 
+        winnerPlayerName = null;
         int startingPlayer = -1;
 
         while(startingPlayer != 1 && startingPlayer != 2) {
@@ -90,6 +91,8 @@ public class Game{
                     System.out.println("Empate.");
                     scoreboard.addGameResult(playerNameA, playerNameB, true);
                     status = "DRAW";
+                    scoreboard.printScoreboard();
+                    connectFour.clearBoard();
                     return "";
 
                 case 'x': // Debido a que el primer símbolo es x, se asigna X a playerNameA
@@ -97,6 +100,8 @@ public class Game{
                     System.out.println("El jugador " + winnerPlayerName + " (" + playerA_Symbol + ")" + " gana la partida!");
                     scoreboard.addGameResult(winnerPlayerName, playerNameB, false);
                     status = "VICTORY";
+                    scoreboard.printScoreboard();
+                    connectFour.clearBoard();
                     return winnerPlayerName;
 
                 case 'o': // Gana playerNameB
@@ -104,12 +109,22 @@ public class Game{
                     System.out.println("El jugador " + winnerPlayerName + " (" + playerB_Symbol + ")" + " gana la partida!");
                     scoreboard.addGameResult(winnerPlayerName, playerNameA, false);
                     status = "VICTORY";
+                    scoreboard.printScoreboard();
+                    connectFour.clearBoard();
                     return winnerPlayerName;
             }
         }
         
         return null;
 
+    }
+
+    public Scoreboard getScoreboard() {
+        return scoreboard;
+    }
+
+    public ConnectFour getConnectFour() {
+        return connectFour;
     }
 
     public static void main(String[] args) {

@@ -96,12 +96,23 @@ class ConnectFour{
         System.out.println(" 1 2 3 4 5 6 7");
     }
 
+
+
     public char getCurrentSymbol() {
         return currentSymbol;
     }
 
     public void setCurrentSymbol(char symbol) {
         this.currentSymbol = symbol;
+    }
+
+    public void clearBoard() {
+        for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 6; j++) {
+                grid[i][j] = ' ';
+            }
+        }
+        currentSymbol = 'x';
     }
 
     public static void main(String[] args) {
