@@ -21,20 +21,19 @@ class ConnectFour{
     public Boolean makeMove(int z){
         
         if(z >= 7 || z < 0) return false;
-        
-        int position = 0; //posicion en la columna
-        
-        while(position < 6 && grid[z][position] != ' ') position++;
 
-        if(position != 6){
+        for(int i=0; i<6; i++){
 
-            grid[z][position] = currentSymbol;
+            if(grid[z][i] != ' ') continue;
+
+            grid[z][i] = currentSymbol;
             if(currentSymbol == 'x') currentSymbol = 'o';
             else currentSymbol = 'x';
 
             return true;
         }
-        else return false;
+
+        return false;
     }
     
     public char isGameOver(){        /*luego en la clase game, hacer un switch que decida
