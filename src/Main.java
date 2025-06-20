@@ -13,7 +13,7 @@ class Main {
         try {
             answer = Integer.parseInt(reader.readLine());
         } catch(IOException | NumberFormatException e) {
-            System.out.println("Error: Entrada inv�lida");
+            System.out.println("Error: Entrada invalida");
         }
 
         for(int i = 0; i < answer; i++) {
