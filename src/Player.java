@@ -24,7 +24,8 @@ class Player {
     public double winRate() {
         int gamesPlayed = wins + draws + losses;
         if(gamesPlayed != 0) {
-            return (double) wins / gamesPlayed; // Se castea a double de tal manera que retorne un decimal
+            double rate = (double) wins / gamesPlayed;
+            return ((int) (rate * 100)) / 100.0; // Se castea a double de tal manera que retorne un decimal
         } else {
             return 0;
         }

@@ -91,23 +91,65 @@ class Scoreboard {
                         " | Empates: " + player.getDraws());
             }
         }
+    }
 
+    public Player getPlayer(String name) {
+        if (checkPlayer(name)) {
+            return players.get(name);
+        } else {
+            return null;
+        }
     }
 
     public static void main(String[] args) {
+
         Scoreboard scoreboard = new Scoreboard();
 
         scoreboard.registerPlayer("Sergio");
         scoreboard.registerPlayer("Joakin");
+        scoreboard.registerPlayer("Martin");
 
-        scoreboard.addGameResult("Joakin", "Sergio", false);
+        for (int i = 0; i < 3; i++) {
+            scoreboard.addGameResult("Sergio", "Joakin", false);
+        }
+
+        for (int i = 0; i < 6; i++) {
+            scoreboard.addGameResult("Joakin", "Sergio", false);
+        }
+
+        for (int i = 0; i < 9; i++) {
+            scoreboard.addGameResult("Martin", "Sergio", false);
+        }
+
+        for (int i = 0; i < 7; i++) {
+            scoreboard.addGameResult("Joakin", "Martin", false);
+        }
+
+        for (int i = 0; i < 4; i++) {
+            scoreboard.addGameResult("Joakin", "Martin", true);
+        }
 
         scoreboard.printScoreboard();
 
-        scoreboard.addGameResult("Sergio", "Joakin", false);
-        scoreboard.addGameResult("Sergio", "Joakin", false);
+        Player[] winSuccesor = scoreboard.winSuccesor(8);
+        System.out.print("Siguiente jugador con más de 8 victorias: ");
+        for (Player player : winSuccesor) {
+            System.out.print(player.getPlayerName());
+        }
 
-        scoreboard.printScoreboard();
+        Player[] winRange = scoreboard.winRange(6, 14);
+        System.out.print("\nJugadores con un rango de victorias entre 6 y 14: ");
+        for (Player player : winRange) {
+            System.out.print(player.getPlayerName() + " ");
+        }
+
+        System.out.println("\nTotal de partidas jugadas: " + scoreboard.getPlayedGames());
+
+        System.out.println("Tasa de victorias de Sergio: " + scoreboard.getPlayer("Sergio").winRate());
+        System.out.println("Tasa de victorias de Joakin: " + scoreboard.getPlayer("Joakin").winRate());
+        System.out.println("Tasa de victorias de Martin: " + scoreboard.getPlayer("Martin").winRate());
+
+
 
     }
 
